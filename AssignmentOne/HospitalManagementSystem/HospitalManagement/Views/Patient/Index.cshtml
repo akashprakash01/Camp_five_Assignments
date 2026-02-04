@@ -1,0 +1,39 @@
+﻿@model List<Patient>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>Patient Details</h2>
+
+
+<table class="table table-bordered table-striped">
+    <thread>
+        <tr>
+            <td>Patient No</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Email</td>
+            <td>Address</td>
+        </tr>
+    </thread>
+
+    <tbody>
+        @foreach (var pat in Model)
+        {
+            <tr>
+                <td>@pat.PatinetId</td>
+                <td>@pat.PatientName</td>
+                <td>@pat.Age</td>
+                <td>@pat.Email</td>
+                <td>@pat.Address</td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Doctor" asp-action="Create" class="btn btn-primary mb-5">
+    Add Doctor
+</a>

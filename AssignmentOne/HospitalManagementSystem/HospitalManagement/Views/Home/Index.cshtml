@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <div class="d-flex justify-content-center my-4">
+
+        <div class="card text-bg-primary shadow" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Total Doctors</h5>
+                <p class="card-text fs-1 fw-bold">
+                    @ViewBag.TotalDoctors
+                </p>
+            </div>
+        </div>
+
+        <div class="card text-bg-primary shadow" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Total Patients</h5>
+                <p class="card-text fs-1 fw-bold">
+                    @ViewBag.TotalPatients
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-flex flex-column align-items-center gap-2 mb-2">
+        <a asp-controller="Doctor" asp-action="Create"
+           class="p-3 bg-secondary text-white fs-3 w-50 text-center rounded link-underline link-underline-opacity-0">
+            Doctor Module
+        </a>
+
+        <a asp-controller="Patient" asp-action="Create"
+            class="p-3 bg-secondary text-white fs-3 w-50 text-center rounded">
+            Patient Module
+        </a>
+
+        <a class="p-3 bg-secondary text-white fs-3 w-50 text-center rounded">
+            Appointment Module
+        </a>
+    </div>
+</div>
+

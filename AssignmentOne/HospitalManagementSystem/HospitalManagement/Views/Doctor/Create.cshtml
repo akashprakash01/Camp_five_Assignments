@@ -1,0 +1,41 @@
+﻿@model Doctor
+
+<div class="container mt-4">
+	<div class="card shadow">
+		<div class="card-body">
+			<form asp-action="Create" asp-controller="Doctor" method="post">
+
+				<div class="mb-3">
+					<label asp-for="DoctorName" class="col-form-label"></label>
+					<input  asp-for="DoctorName" class="form-control" placeholder="Enter Doctor Name"/>
+					<span asp-validation-for="DoctorName" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label asp-for="Age" class="col-form-label"></label>
+					<input asp-for="Age" class="form-control"
+					type="number" placeholder="Enter Age"/>
+					<span asp-validation-for="Age" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label asp-for="Specialization" class="col-form-label"></label>
+					<select asp-for="Specialization"
+							class="form-select"
+							asp-items="@(new SelectList(ViewBag.Specializations))">
+						<option value="">-- Select Specialization --</option>
+					</select>
+					<span asp-validation-for="Specialization" class="text-danger"></span>
+				</div>
+
+				<button type="submit" class="btn btn-success">
+					register Doctor
+				</button>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,47 @@
+﻿@model List<Doctor>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>Doctors Details</h2>
+<form asp-controller="Doctor" asp-action="Index" method="get" class="mb-3">
+    <div class="input-group w-50">
+        <input type="text"
+               name="specialization"
+               value="@ViewBag.SearchValue"
+               class="form-control"
+               placeholder="Search by specialization (e.g. Cardiology)" />
+
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped">
+    <thread>
+        <tr>
+            <td>Doctor No</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>specialization</td>
+        </tr>
+    </thread>
+
+    <tbody>
+        @foreach (var doc in Model)
+        {
+            <tr>
+                <td>@doc.DoctorId</td>
+                <td>@doc.DoctorName</td>
+                <td>@doc.Age</td>
+                <td>@doc.Specialization</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Doctor" asp-action="Create" class="btn btn-primary mb-5">
+    Add Doctor
+</a>

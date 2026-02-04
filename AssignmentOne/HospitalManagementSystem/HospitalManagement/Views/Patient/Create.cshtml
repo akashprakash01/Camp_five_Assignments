@@ -1,0 +1,45 @@
+﻿@model Patient
+
+<div class="container mt-4">
+	<div class="card shadow">
+		<div class="card-body">
+			<form asp-action="Create" asp-controller="Patient" method="post">
+
+				<div class="mb-3">
+					<label asp-for="PatientName" class="col-form-label"></label>
+					<input asp-for="PatientName" class="form-control" placeholder="Enter Patient Name" />
+					<span asp-validation-for="PatientName" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label asp-for="Age" class="col-form-label"></label>
+					<input asp-for="Age" class="form-control"
+						   type="number" placeholder="Enter Age" />
+					<span asp-validation-for="Age" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Email" class="col-form-label"></label>
+					<input asp-for="Email" type="email" class="form-control" placeholder="Enter Email Address" />
+					<span asp-validation-for="Email" class="text-danger"></span>
+				</div>
+
+
+				<div class="mb-3">
+					<label asp-for="Address" class="col-form-label"></label>
+					<input asp-for="Address" class="form-control" placeholder="Enter Address" />
+					<span asp-validation-for="Address" class="text-danger"></span>
+				</div>
+
+				
+
+				<button type="submit" class="btn btn-success">
+					register Doctor
+				</button>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

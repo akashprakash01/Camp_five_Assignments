@@ -1,0 +1,34 @@
+﻿@model List<Appointment>
+
+<h2>Today's Appointments</h2>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning">
+        No appointments scheduled for today.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Appointment No</th>
+                <th>Doctor</th>
+                <th>Patient</th>
+                <th>Date & Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var app in Model)
+            {
+                <tr>
+                    <td>@app.AppointmentId</td>
+                    <td>@app.DoctorId</td>
+                    <td>@app.PatientId</td>
+                    <td>@app.AppointmentDate.ToString("dd-MM-yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

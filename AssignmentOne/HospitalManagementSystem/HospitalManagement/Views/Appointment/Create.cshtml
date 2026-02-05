@@ -1,0 +1,57 @@
+﻿@model Appointment
+
+<div class="container mt-4">
+	<div class="card shadow">
+		<div class="card-body">
+			<form asp-action="Create" asp-controller="Appointment" method="post">
+
+			
+
+			
+
+				<div class="mb-3">
+					<label asp-for="DoctorId" class="col-form-label"></label>
+					<select asp-for="DoctorId"
+        class="form-select"
+        asp-items="ViewBag.Doctors">
+
+					
+						<option value="">-- Select Doctor --</option>
+					</select>
+					<span asp-validation-for="DoctorId" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label asp-for="PatientId" class="col-form-label"></label>
+					<select asp-for="PatientId"
+							class="form-select"
+							asp-items="ViewBag.Patients">
+
+						<option value="">-- Select Patient --</option>
+					</select>
+					<span asp-validation-for="PatientId" class="text-danger"></span>
+				</div>
+
+
+				<div class="mb-3">
+					<label asp-for="AppointmentDate" class="col-form-label"></label>
+					<input asp-for="AppointmentDate"
+						   type="datetime-local"
+						   class="form-control" />
+
+
+					<span asp-validation-for="AppointmentDate" class="text-danger"></span>
+				</div>
+
+
+				<button type="submit" class="btn btn-success">
+					register Doctor
+				</button>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

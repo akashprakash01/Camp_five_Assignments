@@ -4,7 +4,7 @@ namespace HospitalManagement.Models
 {
     public class Patient
     {
-        public int PatinetId { get; set; }
+        public int PatientId { get; set; }
 
         [Required(ErrorMessage = "Name should not be empty")]
         [RegularExpression(@"^[A-Za-z][A-Za-z\s]*$",

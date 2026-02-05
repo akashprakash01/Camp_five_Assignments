@@ -25,6 +25,15 @@
             </div>
         </div>
 
+        <div class="card text-bg-primary shadow" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Total Patients</h5>
+                <p class="card-text fs-1 fw-bold">
+                    @ViewBag.TotalAppointments
+                </p>
+            </div>
+        </div>
+
     </div>
 
     <div class="d-flex flex-column align-items-center gap-2 mb-2">
@@ -38,7 +47,8 @@
             Patient Module
         </a>
 
-        <a class="p-3 bg-secondary text-white fs-3 w-50 text-center rounded">
+        <a asp-controller="Appointment" asp-action="Create"
+           class="p-3 bg-secondary text-white fs-3 w-50 text-center rounded">
             Appointment Module
         </a>
     </div>

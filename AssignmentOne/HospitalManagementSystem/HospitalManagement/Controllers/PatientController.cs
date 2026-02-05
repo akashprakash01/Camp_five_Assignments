@@ -19,12 +19,13 @@ namespace HospitalManagement.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Create(Patient patient)
         {
 
             if (ModelState.IsValid)
             {
-                patient.PatinetId = ListOfPatients.Count + 1;
+                patient.PatientId = ListOfPatients.Count + 1;
                 ListOfPatients.Add(patient);
 
                 //Message

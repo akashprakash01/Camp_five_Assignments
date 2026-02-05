@@ -17,6 +17,7 @@ namespace HospitalManagement.Controllers
         {
             ViewBag.TotalDoctors = DoctorController.ListOfDoctors.Count;
             ViewBag.TotalPatients = PatientController.ListOfPatients.Count;
+            ViewBag.TotalAppointments = AppointmentController.ListOfAppointment.Count;
             return View();
         }
 

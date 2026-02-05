@@ -27,9 +27,11 @@ namespace HospitalManagement.Controllers
 
             if (!string.IsNullOrWhiteSpace(specialization))
             {
+             
+
                 doctors = ListOfDoctors
-                    .Where(d => d.Specialization.Equals(
-                        specialization, StringComparison.OrdinalIgnoreCase))
+                       .Where(d => d.Specialization
+                        .Contains(specialization, StringComparison.OrdinalIgnoreCase))
                     .ToList();
             }
 

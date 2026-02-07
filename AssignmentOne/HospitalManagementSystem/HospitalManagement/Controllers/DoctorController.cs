@@ -1,4 +1,5 @@
 ﻿using HospitalManagement.Models;
+using HospitalManagement.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Numerics;
 
@@ -7,7 +8,7 @@ namespace HospitalManagement.Controllers
     public class DoctorController : Controller
     {
         //In memory databse
-        public static  List<Doctor> ListOfDoctors = new();
+        public static List<Doctor> ListOfDoctors = new();
 
         private List<string> GetSpecialization()
         {
@@ -27,7 +28,7 @@ namespace HospitalManagement.Controllers
 
             if (!string.IsNullOrWhiteSpace(specialization))
             {
-             
+
 
                 doctors = ListOfDoctors
                        .Where(d => d.Specialization
@@ -55,7 +56,7 @@ namespace HospitalManagement.Controllers
 
             if (ModelState.IsValid)
             {
-                doctor.DoctorId = ListOfDoctors.Count+1;
+                doctor.DoctorId = ListOfDoctors.Count + 1;
                 ListOfDoctors.Add(doctor);
 
                 //Message
@@ -66,5 +67,24 @@ namespace HospitalManagement.Controllers
             }
             return View(doctor);
         }
+        /// <summary>
+        /// from here database datafetching
+        /// </summary>
+
+        //fields
+        private readonly IDoctorServicecs _doctorServicecs;
+
+        public DoctorController(IDoctorServicecs doctorServicecs)
+        {
+            _doctorServicecs = doctorServicecs;
+        }
+
+        #region get all Doctors
+        public ActionResult FetchDcotors()
+        {
+            List<Doctor> doctors = _doctorServicecs.SelectAllDoctors().ToList();
+            return View(doctors);
+        }
+        #endregion
     }
 }

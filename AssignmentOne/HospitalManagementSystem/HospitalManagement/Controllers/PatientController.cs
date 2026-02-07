@@ -1,4 +1,5 @@
 ﻿using HospitalManagement.Models;
+using HospitalManagement.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalManagement.Controllers
@@ -36,5 +37,22 @@ namespace HospitalManagement.Controllers
             }
             return View(patient);
         }
+
+
+        private readonly IPatientService _patientService;
+
+        public PatientController(IPatientService patientService)
+        {
+            _patientService = patientService;
+        }
+
+        #region get all Patients
+        public ActionResult FetchPatients()
+        {
+
+            List<Patient> patients = _patientService.SelectAllPatients().ToList();
+            return View(patients);
+        }
+        #endregion
     }
 }

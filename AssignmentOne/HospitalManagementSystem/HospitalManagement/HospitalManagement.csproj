@@ -6,4 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ClassLibraryDatabaseConnection">
+      <HintPath>..\..\..\..\..\..\camp4.1\New folder\New folder\ConsoleAppEmp2026\ClassLibraryDatabaseConnection\bin\Debug\net8.0\ClassLibraryDatabaseConnection.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

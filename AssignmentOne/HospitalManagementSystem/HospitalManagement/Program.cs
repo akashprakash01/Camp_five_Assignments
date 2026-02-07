@@ -1,3 +1,6 @@
+using HospitalManagement.Repository;
+using HospitalManagement.Services;
+
 namespace HospitalManagement
 {
     public class Program
@@ -9,6 +12,18 @@ namespace HospitalManagement
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            //fetching connection string appsettings.json
+            var connectionString = builder.Configuration.GetConnectionString("ConnStringMVC");
+
+
+            //singleton
+            builder.Services.AddSingleton(connectionString);
+
+            //register services and repository
+            builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddScoped<IDoctorServicecs, DoctorServiceImp>();
+            builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+            builder.Services.AddScoped<IPatientService, PatientServiceImp>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,7 +43,7 @@ namespace HospitalManagement
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Test}/{action=Index}/{id?}");
 
             app.Run();
         }

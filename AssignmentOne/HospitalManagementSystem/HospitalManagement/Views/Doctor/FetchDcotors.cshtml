@@ -6,9 +6,23 @@
 
 <h1>FetchDcotors</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="container mt-3">
+    <div class="d-flex align-items-center">
+        <button type="button" class="btn btn-secondary me-2"
+            data-bs-toggle="modal"
+            data-bs-target="#CreateDoctorModal">
+            Create New Doctor
+        </button>
+
+        <input type="text" id="searchInput" class"form-control me-2"
+               placeholder="Enter contact number"
+               style="width:auto;flex-grow:1">
+        <button id="searchButton" class="btn btn-primary">Search</button>
+    </div>
+
+
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -51,3 +65,109 @@
 }
     </tbody>
 </table>
+
+
+<!--Modal-->
+<div class="modal fade" id="CreateDoctorModal" tabindex="-1"
+data-bs-backdrop="static"
+data-bs-keyboard="false">
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+            <h5 class="modal-title">Create Doctor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+        </div>
+
+        <!--body-->
+        <div class="modal-body">
+            <form id="CreateDoctorForm">
+
+                <!--Name-->
+                    <div class="form-group">
+                        <label>Name<span class="text-danger"></span>*</label>
+                        <input class="form-control" id="name" autocomplete="off" />
+                        <span id="nameError" class="text-danger"></span>
+                    </div>
+
+                    <!--age-->
+                    <div class="form-group">
+                        <label>DOB<span class="text-danger">*</span></label>
+                        <input class="form-control" id="dob" type="date" autocomplete="off" />
+                        <span id="dobError" class="text-danger"></span>
+                    </div>
+
+                    <!--Specialization-->
+            </form>
+        </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" id="btnSave" class="btn btn-primary">
+                    Save
+
+                </button>
+            </div>
+
+    </div>
+</div>
+</div>
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function (){
+
+            $("#btnSave").click(function (e){
+                e.preventDefault();
+
+                //claer previous error messages
+                $('.text-danger').text('');
+
+                var hasError = false;
+
+                var ename = $("#name").val().trim();
+                var edob = $("#dob").val().trim();
+
+                //validation
+                if(!ename){
+                    $("#nameError").text("Name is required");
+                    hasError = true;
+                }
+                 if (!edob) {
+                    $("#dobError").text("DOB is required");
+                    hasError = true;
+                }
+
+                if(hasError)
+                    return;
+                
+                 var empData = {
+                     DoctorName : ename,
+                     Age    : edob
+
+                 };
+
+                 $.ajax({
+                     type: "POST",
+                     url:"@Url.Action("Create","Doctors")",
+                     data: empData,
+                     sucess:function (){
+                         $('#CreateDoctorModal').modal('hide');
+                         location.reload();
+                     },
+                     error: function (){
+                         alert("Error adding Doctor");
+                     }
+                 });
+
+
+            });
+        });
+    </script>
+}
